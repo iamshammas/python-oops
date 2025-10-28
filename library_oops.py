@@ -30,10 +30,6 @@ class Book:
 book1 = Book('Alchemist','Paulo Coelo',123,10)  
 book2 = Book('Atomic Habit','James Clear',345,25)  
 
-
-# borrow_book(book) → adds book to borrowed_books if available
-# return_book(book) → removes book from list and returns it
-
 class Member:
     def __init__(self,name,member_id):
         self.name=name
@@ -47,11 +43,47 @@ class Member:
     def return_book(self,book):
         if book in self.borrowed_books:
             self.borrowed_books.remove(book)
-        else
+        else:
+            print('There is no book with the given name')
 
 memb1 = Member('Arun',67273)
 memb1.borrow_book(book1)
 memb1.borrow_book(book2)
-memb1.return_book('book1')
+memb1.return_book(book1)
 print(memb1.borrowed_books)
-# print(book1)
+
+# Class: StudentMember and TeacherMember (Derived Classes)
+# Students can borrow up to 3 books
+# Teachers can borrow up to 5 books
+# Override borrow_book() to enforce these limits
+
+class StudentMember(Member):
+    def __init__(self, name, member_id):
+        super().__init__(name, member_id)
+
+    # def show(self):
+    #     print(f'borrowed {countt}')
+
+    def borrow_book(self, book):
+        if len(self.borrowed_books)>3:
+            print('Student can only borrow upto 3 books at a time')
+            print(len(self.borrowed_books))
+        else:
+            self.borrowed_books.append(book)
+            print(len(self.borrowed_books))
+            
+        # print(len(self.borrowed_books))
+
+# class TeacherMember(Member):
+#     def __init__(self, name, member_id):
+#         super().__init__(name, member_id)
+
+#     def borrow_book(self, book):
+#         pass
+
+stud = StudentMember('Rahul',887832)
+stud.borrow_book('Hell giys')
+stud.borrow_book('book number two')
+stud.borrow_book('third book griys')
+stud.borrow_book('fourth book griys')
+print(stud.borrowed_books)
