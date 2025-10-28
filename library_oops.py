@@ -9,6 +9,10 @@ class Book:
 
     def __str__(self):
         return f'{self.title}'
+    
+    def __repr__(self):
+        return self.__str__()
+
 
     def display_info(self):
         print(f'The book {self.title} written by {self.author}.\nISBN: {self.isbn} . Available copies: {self.available_copies}')
@@ -24,6 +28,8 @@ class Book:
 
 # book object created
 book1 = Book('Alchemist','Paulo Coelo',123,10)  
+book2 = Book('Atomic Habit','James Clear',345,25)  
+
 
 # borrow_book(book) → adds book to borrowed_books if available
 # return_book(book) → removes book from list and returns it
@@ -43,4 +49,5 @@ class Member:
 
 memb1 = Member('Arun',67273)
 memb1.borrow_book(book1)
-print(book1)
+memb1.borrow_book(book2)
+# print(book1)
