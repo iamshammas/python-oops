@@ -45,9 +45,13 @@ class Member:
         print(self.borrowed_books)
 
     def return_book(self,book):
-        pass
+        if book in self.borrowed_books:
+            self.borrowed_books.remove(book)
+        else
 
 memb1 = Member('Arun',67273)
 memb1.borrow_book(book1)
 memb1.borrow_book(book2)
+memb1.return_book('book1')
+print(memb1.borrowed_books)
 # print(book1)
