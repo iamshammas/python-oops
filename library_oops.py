@@ -65,12 +65,12 @@ class StudentMember(Member):
     #     print(f'borrowed {countt}')
 
     def borrow_book(self, book):
-        if len(self.borrowed_books)>3:
+        if len(self.borrowed_books)>=3:
             print('Student can only borrow upto 3 books at a time')
-            print(len(self.borrowed_books))
+            # print(len(self.borrowed_books))
         else:
             self.borrowed_books.append(book)
-            print(len(self.borrowed_books))
+            # print(len(self.borrowed_books))
             
         # print(len(self.borrowed_books))
 
@@ -86,4 +86,4 @@ stud.borrow_book('Hell giys')
 stud.borrow_book('book number two')
 stud.borrow_book('third book griys')
 stud.borrow_book('fourth book griys')
-print(stud.borrowed_books)
+# print(stud.borrowed_books)
