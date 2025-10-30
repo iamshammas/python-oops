@@ -1,4 +1,4 @@
-
+from abc import abstractmethod,ABC
 
 class Book:
     def __init__(self,title,author,isbn,available_copies):
@@ -29,6 +29,14 @@ class Book:
 # book object created
 book1 = Book('Alchemist','Paulo Coelo',123,10)  
 book2 = Book('Atomic Habit','James Clear',345,25)  
+
+@abstractmethod
+class LibraryUser(ABC):
+    def borrow_book(self):
+        pass
+
+    def return_book(self):
+        pass
 
 class Member:
     def __init__(self,name,member_id):
