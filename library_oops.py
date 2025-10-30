@@ -34,15 +34,18 @@ class Member:
     def __init__(self,name,member_id):
         self.name=name
         self.member_id = member_id
-        self.borrowed_books = []
+        self._borrowed_books = []
 
     def borrow_book(self,book):
-        self.borrowed_books.append(book)
-        print(self.borrowed_books)
+        self._borrowed_books.append(book)
+        # print(self.__borrowed_books)
+
+    def get_book(self):
+        return self._borrowed_books
 
     def return_book(self,book):
-        if book in self.borrowed_books:
-            self.borrowed_books.remove(book)
+        if book in self._borrowed_books:
+            self._borrowed_books.remove(book)
         else:
             print('There is no book with the given name')
 
@@ -50,7 +53,7 @@ memb1 = Member('Arun',67273)
 memb1.borrow_book(book1)
 memb1.borrow_book(book2)
 memb1.return_book(book1)
-print(memb1.borrowed_books)
+# print(memb1.__borrowed_books)
 
 # Class: StudentMember and TeacherMember (Derived Classes)
 # Students can borrow up to 3 books
@@ -60,22 +63,23 @@ print(memb1.borrowed_books)
 class StudentMember(Member):
     def __init__(self, name, member_id):
         super().__init__(name, member_id)
-
+        
     # def show(self):
     #     print(f'borrowed {countt}')
 
+
     def borrow_book(self, book):
-        if len(self.borrowed_books)>=3:
+        if len(self._borrowed_books)>=3:
             print('Student can only borrow upto 3 books at a time')
             # print(len(self.borrowed_books))
         else:
-            self.borrowed_books.append(book)
+            self._borrowed_books.append(book)
             # print(len(self.borrowed_books))
             
         # print(len(self.borrowed_books))
 
     def return_book(self, book):
-        self.borrowed_books.remove(book)
+        self.__borrowed_books.remove(book)
         print('successfully returned')
     
 
@@ -84,10 +88,10 @@ class TeacherMember(Member):
         super().__init__(name, member_id)
 
     def borrow_book(self, book):
-        if len(self.borrowed_books)>=5:
+        if len(self._borrowed_books)>=5:
             print('Student can only borrow upto 5 books at a time')
         else:
-            self.borrowed_books.append(book)
+            self._borrowed_books.append(book)
 
 stud = StudentMember('Rahul',887832)
 teach = TeacherMember('Shanmugam',89344)
@@ -96,7 +100,7 @@ stud.borrow_book('book number two')
 stud.borrow_book('third book griys')
 stud.borrow_book('fourth book griys')
 # stud.return_book('book number two')
-print(stud.borrowed_books)
+# print(stud.borrowed_books)
 
 ## adding teacher's book
 teach.borrow_book("teacher's book 1")
@@ -105,4 +109,11 @@ teach.borrow_book("teacher's book 3")
 
 teach.return_book("teacher's book 1")
 
-print(teach.borrowed_books)
+# print(teach.borrowed_books)
+
+# Encapsulation & Abstraction
+# Make all attributes private (use __attribute) and provide getters/setters where needed.
+# Use at least one abstract class (from abc import ABC, abstractmethod) — e.g., LibraryUser(ABC) that defines abstract methods borrow_book() and return_book().
+
+print(teach.get_book())
+print(stud.get_book())
