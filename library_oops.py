@@ -74,16 +74,35 @@ class StudentMember(Member):
             
         # print(len(self.borrowed_books))
 
-# class TeacherMember(Member):
-#     def __init__(self, name, member_id):
-#         super().__init__(name, member_id)
+    def return_book(self, book):
+        self.borrowed_books.remove(book)
+        print('successfully returned')
+    
 
-#     def borrow_book(self, book):
-#         pass
+class TeacherMember(Member):
+    def __init__(self, name, member_id):
+        super().__init__(name, member_id)
+
+    def borrow_book(self, book):
+        if len(self.borrowed_books)>=5:
+            print('Student can only borrow upto 5 books at a time')
+        else:
+            self.borrowed_books.append(book)
 
 stud = StudentMember('Rahul',887832)
+teach = TeacherMember('Shanmugam',89344)
 stud.borrow_book('Hell giys')
 stud.borrow_book('book number two')
 stud.borrow_book('third book griys')
 stud.borrow_book('fourth book griys')
-# print(stud.borrowed_books)
+# stud.return_book('book number two')
+print(stud.borrowed_books)
+
+## adding teacher's book
+teach.borrow_book("teacher's book 1")
+teach.borrow_book("teacher's book 2")
+teach.borrow_book("teacher's book 3")
+
+teach.return_book("teacher's book 1")
+
+print(teach.borrowed_books)
