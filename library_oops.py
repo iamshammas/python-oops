@@ -119,9 +119,9 @@ teach.return_book("teacher's book 1")
 
 # print(teach.borrowed_books)
 
-# Encapsulation & Abstraction
-# Make all attributes private (use __attribute) and provide getters/setters where needed.
-# Use at least one abstract class (from abc import ABC, abstractmethod) — e.g., LibraryUser(ABC) that defines abstract methods borrow_book() and return_book().
-
 print(teach.get_book())
 print(stud.get_book())
+
+# 5. **Polymorphism**
+    # - Show that `StudentMember` and `TeacherMember` behave differently when borrowing books, but are used interchangeably through a reference of type `LibraryUser`.
+
